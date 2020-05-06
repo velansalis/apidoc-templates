@@ -1,0 +1,25 @@
+:root {
+  /* Sidenav */
+  --sidenav-contents-border-radius: 10px;
+  --sidenav-width: 335px;
+  --sidenav-children: 280px;
+  --content-margin: 320px;
+  --sidenav-bg: #1d1d1d;
+  --sidenav-color: #ffffff;
+
+  /* Sidenav Search Block */
+  --sidenav-search-box-width: 280px;
+  --sidenav-search-bg: var(--sidenav-bg);
+  --sidenav-search-color: var(--sidenav-color);
+  --sidenav-search-border: #3f3f3f;
+
+  /* Module Names */
+  --sidenav-module-name-bg: #3f3f3f;
+  --sidenav-module-name-border: #3f3f3f;
+  --sidenav-module-name-color: #a5a5a5;
+
+  /* Module links */
+  --sidenav-links-color: #a5a5a5;
+  --sidenav-active-links-bg: #a7a7a7;
+  --sidenav-active-links-color: #000000;
+}
