@@ -28,5 +28,20 @@
 }
 
 #content {
-  background-color: #2c2c2c;
+  background-color: var(--container-bg);
+  padding: 0 5em;
+}
+
+#topnav {
+  position: fixed;
+  width: 100vw;
+  top: 0;
+  left: 0;
+  padding: 2em;
+  background-color: var(--sidenav-bg);
+  z-index: 100;
+}
+
+html {
+  background-color: var(--container-bg);
 }

@@ -36,10 +36,9 @@ td.code {
 }
 
 #content {
-  padding-top: 16px;
+  padding-top: 1em;
   z-index: -1;
   margin-left: var(--content-margin);
-  padding-left: 40px;
 }
 
 p {
@@ -59,9 +58,6 @@ h2 {
   font-size: 1.8em;
   line-height: 40px;
   margin: 0;
-}
-
-section {
 }
 
 section h1 {
@@ -266,6 +262,7 @@ pre code.sample-request-response-json {
 .sidenav-search {
   width: var(--sidenav-width);
   left: 0px;
+  top: calc(100vh - var(--sidenav-search-height));
   position: fixed;
   padding: 16px 20px 10px 20px;
   background-color: var(--sidenav-bg);
@@ -296,10 +293,10 @@ pre code.sample-request-response-json {
  * Sidenav
  * ------------------------------------------------------------------------------------------ */
 .sidenav {
-  width: var(--sidenav-width);
+  width: calc(var(--sidenav-width) + 14px);
   margin: 0;
   position: fixed;
-  top: 50px;
+  top: 0;
   left: 0;
   bottom: 0;
   overflow-x: hidden;
@@ -326,11 +323,10 @@ pre code.sample-request-response-json {
 
 .sidenav > li.nav-header {
   margin-top: 8px;
-  margin-bottom: 8px;
+  padding: 0.5em;
 }
 
 .sidenav > li.nav-header > a {
-  padding: 0.5em;
   border: 1px solid var(--sidenav-module-name-border);
   border-radius: var(--sidenav-contents-border-radius);
   width: var(--sidenav-children);

@@ -12,6 +12,7 @@
   --sidenav-search-bg: var(--sidenav-bg);
   --sidenav-search-color: var(--sidenav-color);
   --sidenav-search-border: #3f3f3f;
+  --sidenav-search-height: 52px;
 
   /* Module Names */
   --sidenav-module-name-bg: #3f3f3f;
@@ -22,4 +23,7 @@
   --sidenav-links-color: #a5a5a5;
   --sidenav-active-links-bg: #a7a7a7;
   --sidenav-active-links-color: #000000;
+
+  /* Container */
+  --container-bg: #ddd;
 }
