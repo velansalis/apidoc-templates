@@ -1,0 +1,22 @@
+{
+  "name": "apidoc-templates",
+  "version": "1.0.0",
+  "description": "Template list for apidocs.js",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/l3g0b0y/apidoc-templates.git"
+  },
+  "keywords": [
+    "ApiDocsjs"
+  ],
+  "author": "L3G0B0Y",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/l3g0b0y/apidoc-templates/issues"
+  },
+  "homepage": "https://github.com/l3g0b0y/apidoc-templates#readme"
+}
