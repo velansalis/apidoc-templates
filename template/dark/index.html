@@ -1,21 +1,20 @@
 <!DOCTYPE html>
 <html>
+  <head>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <title>Loading...</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen" />
+    <link href="vendor/prettify.css" rel="stylesheet" media="screen" />
+    <link href="css/style.css" rel="stylesheet" media="screen, print" />
+    <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
+    <script src="vendor/polyfill.js"></script>
+  </head>
 
-<head>
-  <meta http-equiv="X-UA-Compatible" content="IE=edge" />
-  <title>Loading...</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
-  <link href="vendor/bootstrap.min.css" rel="stylesheet" media="screen" />
-  <link href="vendor/prettify.css" rel="stylesheet" media="screen" />
-  <link href="css/style.css" rel="stylesheet" media="screen, print" />
-  <link href="img/favicon.ico" rel="icon" type="image/x-icon" />
-  <script src="vendor/polyfill.js"></script>
-</head>
-
-<body class="container-fluid">
-  <!-- Sidenav -->
-  <script id="template-sidenav" type="text/x-handlebars-template">
+  <body class="container-fluid">
+    <!-- Sidenav -->
+    <script id="template-sidenav" type="text/x-handlebars-template">
       <nav id="scrollingNav">
         <div class="sidenav-search">
           <input class="form-control search" type="text" placeholder="{{__ "Filter..."}}">
@@ -47,26 +46,26 @@
         </ul>
       </nav>
     </script>
-  <script id="template-project" type="text/x-handlebars-template">
+    <script id="template-project" type="text/x-handlebars-template">
       <div class="pull-left">
-        <h1 class="main-title">
+        <h2 class="main-title">
           {{name}}
-        </h1>
+        </h2>
         {{#if description}}
-          <h2 class="main-description">
+          <h4 class="main-description">
             {{{nl2br description}}}
-          </h2>
+          </h4>
         {{/if}}
       </div>
       {{#if template.withCompare}}
-        <div class="pull-left">
+        <div class="pull-right">
           <div class="btn-group">
             <button
               id="version"
               class="btn btn-lg btn-default dropdown-toggle"
               data-toggle="dropdown"
             >
-            v.
+              v.
               <strong>
                 {{version}}
               </strong>
@@ -99,7 +98,7 @@
       <div class="clearfix"></div>
     </script>
 
-  <script id="template-header" type="text/x-handlebars-template">
+    <script id="template-header" type="text/x-handlebars-template">
       {{#if content}}
         <div id="api-_" class="show-api-article show-api-_-article">
           {{{content}}}
@@ -107,7 +106,7 @@
       {{/if}}
     </script>
 
-  <script id="template-footer" type="text/x-handlebars-template">
+    <script id="template-footer" type="text/x-handlebars-template">
       {{#if content}}
         <div id="api-_footer" class="show-api-article show-api-_-article">
           {{{content}}}
@@ -115,7 +114,7 @@
       {{/if}}
     </script>
 
-  <script id="template-generator" type="text/x-handlebars-template">
+    <script id="template-generator" type="text/x-handlebars-template">
       {{#if template.withGenerator}}
         {{#if generator}}
           <div class="content">
@@ -129,7 +128,7 @@
       {{/if}}
     </script>
 
-  <script id="template-sections" type="text/x-handlebars-template">
+    <script id="template-sections" type="text/x-handlebars-template">
       <section id="api-{{group}}" class="show-api-group show-api-{{group}}-group {{#if aloneDisplay}} hide{{/if}}">
         {{#if description}}
           <p>{{{nl2br description}}}</p>
@@ -142,7 +141,7 @@
       </section>
     </script>
 
-  <script id="template-article" type="text/x-handlebars-template">
+    <script id="template-article" type="text/x-handlebars-template">
       <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}">
         <div class="pull-left">
           <h2>
@@ -152,7 +151,21 @@
             <span class="type type__{{toLowerCase article.type}}">{{toLowerCase article.type}}</span>
             {{article.title}}{{/if}}
           </h1>
+          {{#if article.permission}}
+          <p class="permission">
+            {{__ "Permission:"}}
+            {{#each article.permission}}
+              {{name}}
+              {{#if title}}
+              <button type="button" class="btn btn-info btn-xs" data-title="{{title}}" data-content="{{nl2br description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
+                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
+              </button>
+              {{/if}}
+            {{/each}}
+          </p>
+        {{/if}}
         </div>
+
         {{#if template.withCompare}}
         <div class="pull-right">
           <div class="btn-group">
@@ -183,20 +196,6 @@
         {{/if}}
         <pre class="prettyprint language-html" data-type="{{toLowerCase article.type}}"><code>{{article.url}}</code></pre>
 
-        {{#if article.permission}}
-          <p>
-            {{__ "Permission:"}}
-            {{#each article.permission}}
-              {{name}}
-              {{#if title}}
-              <button type="button" class="btn btn-info btn-xs" data-title="{{title}}" data-content="{{nl2br description}}" data-html="true" data-toggle="popover" data-placement="right" data-trigger="hover">
-                  <span class="glyphicon glyphicon-info-sign" aria-hidden="true"></span>
-              </button>
-              {{/if}}
-            {{/each}}
-          </p>
-        {{/if}}
-
         {{#if_gt article.examples.length compare=0}}
           <ul class="nav nav-tabs nav-tabs-examples">
             {{#each article.examples}}
@@ -224,7 +223,7 @@
       </article>
     </script>
 
-  <script id="template-article-param-block" type="text/x-handlebars-template">
+    <script id="template-article-param-block" type="text/x-handlebars-template">
       {{#if params}}
         {{#each params.fields}}
           <h2>{{__ @key}}</h2>
@@ -281,7 +280,10 @@
       {{/if}}
     </script>
 
-  <script id="template-article-sample-request" type="text/x-handlebars-template">
+    <script
+      id="template-article-sample-request"
+      type="text/x-handlebars-template"
+    >
       {{#if article.sampleRequest}}
         <h2>{{__ "Send a Sample Request"}}</h2>
         <form class="form-horizontal">
@@ -365,7 +367,7 @@
       {{/if}}
     </script>
 
-  <script id="template-compare-article" type="text/x-handlebars-template">
+    <script id="template-compare-article" type="text/x-handlebars-template">
       <article id="api-{{article.group}}-{{article.name}}-{{article.version}}" {{#if hidden}}class="hide"{{/if}} data-group="{{article.group}}" data-name="{{article.name}}" data-version="{{article.version}}" data-compare-version="{{compare.version}}">
         <div class="pull-left">
           <h1>{{underscoreToSpace article.group}} - {{{showDiff article.title compare.title}}}</h1>
@@ -457,7 +459,10 @@
       </article>
     </script>
 
-  <script id="template-article-compare-permission" type="text/x-handlebars-template">
+    <script
+      id="template-article-compare-permission"
+      type="text/x-handlebars-template"
+    >
       <p>
         {{__ "Permission:"}}
         {{#each_compare_list_field
@@ -622,7 +627,10 @@
       </p>
     </script>
 
-  <script id="template-article-compare-param-block" type="text/x-handlebars-template">
+    <script
+      id="template-article-compare-param-block"
+      type="text/x-handlebars-template"
+    >
       {{#if source}}
         {{#each_compare_keys source.fields compare.fields}}
           {{#if typeSame}}
@@ -717,7 +725,10 @@
       {{/if}}
     </script>
 
-  <script id="template-article-compare-param-block-body" type="text/x-handlebars-template">
+    <script
+      id="template-article-compare-param-block-body"
+      type="text/x-handlebars-template"
+    >
       <tbody>
         {{#each_compare_field source compare}}
           {{#if typeSame}}
@@ -797,46 +808,45 @@
       </tbody>
     </script>
 
-  <div class="container-fluid">
-    <div class="row">
-      <div id="sidenav" class="span2">
-        <div class="sidenav-fixed"></div>
-      </div>
-      <div id="content">
-        <div id="project"></div>
-        <div id="header"></div>
-        <div id="sections"></div>
-        <div id="footer"></div>
-        <div id="generator"></div>
+    <div class="container-fluid">
+      <div class="row">
+        <div id="sidenav" class="span2">
+          <div class="sidenav-fixed"></div>
+        </div>
+        <div id="content">
+          <div id="project"></div>
+          <div id="header"></div>
+          <div id="sections"></div>
+          <div id="footer"></div>
+          <div id="generator"></div>
+        </div>
       </div>
     </div>
-  </div>
 
-  <div id="loader">
-    <div class="spinner">
-      <div class="spinner-container container1">
-        <div class="circle1"></div>
-        <div class="circle2"></div>
-        <div class="circle3"></div>
-        <div class="circle4"></div>
+    <div id="loader">
+      <div class="spinner">
+        <div class="spinner-container container1">
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+          <div class="circle3"></div>
+          <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container2">
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+          <div class="circle3"></div>
+          <div class="circle4"></div>
+        </div>
+        <div class="spinner-container container3">
+          <div class="circle1"></div>
+          <div class="circle2"></div>
+          <div class="circle3"></div>
+          <div class="circle4"></div>
+        </div>
+        <p>Loading...</p>
       </div>
-      <div class="spinner-container container2">
-        <div class="circle1"></div>
-        <div class="circle2"></div>
-        <div class="circle3"></div>
-        <div class="circle4"></div>
-      </div>
-      <div class="spinner-container container3">
-        <div class="circle1"></div>
-        <div class="circle2"></div>
-        <div class="circle3"></div>
-        <div class="circle4"></div>
-      </div>
-      <p>Loading...</p>
     </div>
-  </div>
 
-  <script data-main="main.js" src="vendor/require.min.js"></script>
-</body>
-
+    <script data-main="main.js" src="vendor/require.min.js"></script>
+  </body>
 </html>

@@ -20,7 +20,13 @@
 }
 
 .main-title {
-  color: #f3f3f3;
+  font-weight: bold;
+  font-family: "Source Sans Pro Bold", sans-serif;
+  color: aliceblue;
+}
+
+.main-description {
+  color: aliceblue;
 }
 
 .pull-left {
@@ -43,5 +49,29 @@
 }
 
 html {
-  background-color: var(--container-bg);
+  background-color: var(--sidenav-bg);
+}
+
+.permission {
+  display: inline-block;
+  padding: 0.5em 2em;
+  background-color: var(--permission-block-bg);
+  border-radius: var(--permission-border-radius);
+  margin: 10px 0 0 0;
+}
+
+.nav-tabs {
+  border-bottom: 0;
+}
+
+.nav-tabs > li.active > a {
+  background-color: var(--sidenav-bg);
+  border: 0;
+  padding: 0.4em 1.5em;
+  color: white;
+}
+
+pre.prettyprint {
+  margin-top: 0;
+  border-radius: 0;
 }
