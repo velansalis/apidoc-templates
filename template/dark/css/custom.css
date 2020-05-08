@@ -54,7 +54,7 @@ html {
 
 .permission {
   display: inline-block;
-  padding: 0.5em 2em;
+  padding: 0.5em;
   background-color: var(--permission-block-bg);
   border-radius: var(--permission-border-radius);
   margin: 10px 0 0 0;
@@ -64,11 +64,14 @@ html {
   border-bottom: 0;
 }
 
-.nav-tabs > li.active > a {
+.nav-tabs > li.active > a,
+.nav-tabs > li.active > a:focus,
+.nav-tabs > li.active > a:hover {
   background-color: var(--sidenav-bg);
   border: 0;
   padding: 0.4em 1.5em;
   color: white;
+  border-radius: 0;
 }
 
 pre.prettyprint {
